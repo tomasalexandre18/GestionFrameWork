@@ -217,4 +217,16 @@ class Requester
         }
         return $this->prepare($out, $param);
     }
+
+    public function count(array $parrams)
+    {
+        $out = "SELECT COUNT(*) FROM ".$this->table;
+        $param = [];
+        if (count($parrams) > 0) {
+            $t = $this->where($parrams);
+            $out .= " WHERE ".$t[0];
+            $param = $t[1];
+        }
+        return $this->prepare($out, $param);
+    }
 }

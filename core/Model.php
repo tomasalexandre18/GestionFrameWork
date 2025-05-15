@@ -23,7 +23,7 @@ class Model extends DB
 
     public function findAll(array $parrams = []): array
     {
-        $stmt = $this->requester->select(["WHERE"=>$parrams]);
+        $stmt = $this->requester->select($parrams);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -31,7 +31,7 @@ class Model extends DB
 
     public function find(array $parrams = []): array|false
     {
-        $stmt = $this->requester->select(["WHERE"=>$parrams]);
+        $stmt = $this->requester->select($parrams);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -50,6 +50,12 @@ class Model extends DB
         $stmt = $this->requester->insert($parrams);
         $stmt->execute();
         return $this->getConn()->lastInsertId();
+    }
+
+    public function count(array $parrams = []): int {
+        $stmt = $this->requester->count($parrams);
+        $stmt->execute();
+        return (int) $stmt->fetchColumn();
     }
 
 }

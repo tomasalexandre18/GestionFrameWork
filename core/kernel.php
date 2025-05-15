@@ -46,7 +46,7 @@ class kernel {
         }));
 
         $f = new ReflectionMethod(self::$controller, self::$url["action"]);
-        if ($f->getNumberOfRequiredParameters() != count(self::$url["args"]) && $f->getNumberOfParameters() > count(self::$url["args"])) {
+        if ($f->getNumberOfRequiredParameters() > count(self::$url["args"]) && $f->getNumberOfParameters() > count(self::$url["args"])) {
             http_response_code(404);
             echo "Error 404: Arguments out of range";
             die;
