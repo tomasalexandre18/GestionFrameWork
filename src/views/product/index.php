@@ -39,6 +39,7 @@
             <button class="btn btn-outline-secondary" type="button" onclick="handleSearch()">Rechercher</button>
     </div>
     <a href="/product/add" class="btn btn-primary">Ajouter un produit</a>
+    <a href="/zone_stock/index" class="btn btn-secondary">Gérer les zones de stockage</a>
 </div>
 <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
 <?php foreach ($products as $product): ?>
