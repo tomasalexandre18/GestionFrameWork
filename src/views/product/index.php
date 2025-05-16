@@ -38,20 +38,23 @@
                 value="<?= $search ?>">
             <button class="btn btn-outline-secondary" type="button" onclick="handleSearch()">Rechercher</button>
     </div>
-
+    <a href="/product/add" class="btn btn-primary">Ajouter un produit</a>
 </div>
 <div class="d-flex flex-wrap justify-content-center gap-3 mt-3">
 <?php foreach ($products as $product): ?>
     <div class="card" style="width: 18rem;">
-        <img src="/images/<?= $product["image"] ?>" class="card-img-top" alt="<?= $product["name"] ?>">
+        <div class="ratio ratio-1x1">
+            <img src="/images/<?= $product["image"] ?>" class="card-img-top object-fit-contain" alt="<?= $product["name"] ?>">
+        </div>
         <div class="card-body">
-            <h5 class="card-title"><?= $product["name"] ?></h5>
-            <p class="card-text">Prix HT: <?= $product["prix_ht"] ?> €</p>
-            <p class="card-text">Prix TTC: <?= $product["prix_ttc"] ?> €</p>
-            <p class="card-text">Taux TVA: <?= $product["taux_tva"] ?> %</p>
+            <div class="d-flex justify-content-between">
+                <h5 class="card-title"><?= $product["name"] ?></h5>
+                <h5 class="card-title"><?= $product["prix_ttc"] ?> € TTC</h5>
+            </div>
             <p class="card-text">Zone de stockage: <?= $product["id_zone_stock"] ?></p>
-            <a href="/product/edit/<?= $product["id"] ?>" class="btn btn-primary">Modifier</a>
-            <a href="/product/delete/<?= $product["id"] ?>" class="btn btn-danger">Supprimer</a>
+            <div class="d-flex justify-content-between gap-2">
+                <a href="/product/view/<?= $product["id"] ?>" class="btn btn-primary flex-grow-1">Voir le produit</a>
+            </div>
         </div>
     </div>
 <?php endforeach; ?>

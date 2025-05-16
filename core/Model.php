@@ -58,5 +58,15 @@ class Model extends DB
         return (int) $stmt->fetchColumn();
     }
 
+    public function update(array $parrams, int $pk_value): void {
+        $stmt = $this->requester->update([
+            "DATA" => $parrams,
+            "WHERE" => [
+                $this->primaryKey => $pk_value
+            ]
+        ]);
+        $stmt->execute();
+    }
+
 }
 
